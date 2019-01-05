@@ -110,24 +110,6 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker
 
-# Custom Lineage packages
-PRODUCT_PACKAGES += \
-    AudioFX \
-    LineageSettingsProvider \
-    LineageSetupWizard \
-    Eleven \
-    ExactCalculator \
-    Jelly \
-    LockClock \
-    TrebuchetQuickStep \
-    Updater \
-    WallpaperPicker \
-    WeatherProvider
-
-# Exchange support
-PRODUCT_PACKAGES += \
-    Exchange
-
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
