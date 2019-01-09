@@ -7,14 +7,15 @@ Additional Squid-OS functions:
 - mmmp:            Builds all of the modules in the supplied directories and pushes them to the device.
 - aospremote:      Add git remote for matching AOSP repository.
 - cafremote:       Add git remote for matching CodeAurora repository.
-- githubremote:    Add git remote for LineageOS Github.
+- githubremote:    Add git remote for ion-OS Github.
 - mka:             Builds using SCHED_BATCH on all processors.
 - mkap:            Builds the module(s) using mka and pushes them to the device.
 - cmka:            Cleans and builds using mka.
 - repodiff:        Diff 2 different branches or tags within the same repo
 - repolastsync:    Prints date and time of last repo sync.
 - reposync:        Parallel repo sync using ionice and SCHED_BATCH.
-- repopick:        Utility to fetch changes from Gerrit.
+- repopick:        Utility to fetch changes from ion-OS Gerrit.
+- losrepopick:     Utility to fetch changes from ion-OS Gerrit.
 - installboot:     Installs a boot.img to the connected device.
 - installrecovery: Installs a recovery.img to the connected device.
 EOF
@@ -84,6 +85,7 @@ function breakfast()
             lunch $target
         else
             # This is probably just the Squid model name
+
             if [ -z "$variant" ]; then
                 variant="userdebug"
             fi
@@ -100,6 +102,7 @@ function eat()
 {
     if [ "$OUT" ] ; then
         ZIPPATH=`ls -tr "$OUT"/squid-*.zip | tail -1`
+
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
             return 1
@@ -130,6 +133,7 @@ EOF
             rm /tmp/command
         else
             echo "The connected device does not appear to be $SQUID_BUILD, run away!"
+
         fi
         return $?
     else
@@ -362,7 +366,7 @@ function installboot()
         adb shell rm -rf /cache/boot.img
         echo "Installation complete."
     else
-        echo "The connected device does not appear to be $LINEAGE_BUILD, run away!"
+        echo "The connected device does not appear to be $ION_BUILD, run away!"
     fi
 }
 
@@ -691,7 +695,6 @@ function lineagerebase() {
     fi
     cd $dir
     repo=$(git config --get remote.squid.projectname)
-    echo "Starting branch..."
     repo start tmprebase .
     echo "Bringing it up to date..."
     repo sync .
@@ -780,7 +783,6 @@ function dopush()
         done
         echo "Device Found."
     fi
-
     if (adb shell getprop ro.squid.device | grep -q "$SQUID_BUILD") || [ "$FORCE_PUSH" = "true" ];
     then
     # retrieve IP and PORT info if we're using a TCP connection
@@ -900,6 +902,7 @@ EOF
     return 0
     else
         echo "The connected device does not appear to be $SQUID_BUILD, run away!"
+
     fi
 }
 

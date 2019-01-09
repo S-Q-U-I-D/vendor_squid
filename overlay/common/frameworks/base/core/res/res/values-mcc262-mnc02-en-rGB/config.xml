@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Copyright (c) 2015, The Linux Foundation. All rights reserved.
+<<<<<<< HEAD
      Redistribution and use in source and binary forms, with or without
+=======
+
+    Redistribution and use in source and binary forms, with or without
+>>>>>>> a48aa366... ionize
     modification, are permitted provided that the following conditions are
     met:
         * Redistributions of source code must retain the above copyright
@@ -13,7 +18,12 @@
         * Neither the name of The Linux Foundation nor the names of its
           contributors may be used to endorse or promote products derived
           from this software without specific prior written permission.
+<<<<<<< HEAD
      THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+=======
+
+    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+>>>>>>> a48aa366... ionize
     WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
     MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
     ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
@@ -43,7 +53,11 @@
          13  - Urdu
          14+ - reserved -->
 
+<<<<<<< HEAD
      <!-- National language single shift tables to enable for SMS encoding.
+=======
+    <!-- National language single shift tables to enable for SMS encoding.
+>>>>>>> a48aa366... ionize
          Decoding is always enabled. Array elements are codes from the table above.
          Example 1: devices sold in Turkey must include table 1
          Example 2: devices sold in India should include tables 4 through 13
@@ -64,7 +78,11 @@
         <item>13</item>
     </integer-array>
 
+<<<<<<< HEAD
      <!-- National language locking shift tables to enable for SMS encoding.
+=======
+    <!-- National language locking shift tables to enable for SMS encoding.
+>>>>>>> a48aa366... ionize
          Decoding is always enabled. Array elements are codes from the table above.
          Example 1: devices sold in Turkey must include table 1.
          Example 2: devices sold in India should include tables 4 through 13
@@ -85,4 +103,7 @@
         <item>13</item>
     </integer-array>
 </resources>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a48aa366... ionize

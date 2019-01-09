@@ -1,5 +1,7 @@
 # Copyright (C) 2015 The CyanogenMod Project
 #           (C) 2017-2018 The Squid-eOS Project
+#           (C) 2017-2018 The LineageOS Project
+#           (C) 2019 The ion-OS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,3 +22,8 @@ include $(TOPDIR)vendor/squid/build/core/mtk_target.mk
 
 # Rules for QCOM targets
 include $(TOPDIR)vendor/squid/build/core/qcom_target.mk
+
+# We modify several neverallows, so let the build proceed
+ifneq ($(TARGET_BUILD_VARIANT),user)
+SELINUX_IGNORE_NEVERALLOWS := true
+endif

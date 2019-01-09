@@ -26,8 +26,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Default notification/alarm sounds
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.config.notification_sound=Argon.ogg \
-    ro.config.alarm_alert=Hassium.ogg
+    ro.config.notification_sound=Popcorn.ogg \
+    ro.config.alarm_alert=Bright_morning.ogg
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Thank you, please drive thru!
@@ -41,6 +41,10 @@ else
 # Enable ADB authentication
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
 endif
+
+# Ambient Play
+PRODUCT_PACKAGES += \
+    AmbientPlayHistoryProvider
 
 # Ambient Play
 PRODUCT_PACKAGES += \
@@ -153,6 +157,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     org.pixelexperience.keydisabler
+
 # Branding
 include vendor/ion/config/branding.mk
 

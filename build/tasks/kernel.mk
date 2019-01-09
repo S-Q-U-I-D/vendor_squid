@@ -3,6 +3,7 @@
 #           (C) 2018 The ion-OS Project
 #           (C) 2018 The Squid-OS Project
 #
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -264,7 +265,7 @@ kerneltags: $(KERNEL_CONFIG)
 
 .PHONY: kernelconfig kernelxconfig kernelsavedefconfig alldefconfig
 
- kernelconfig:  KERNELCONFIG_MODE := menuconfig
+kernelconfig:  KERNELCONFIG_MODE := menuconfig
 kernelxconfig: KERNELCONFIG_MODE := xconfig
 kernelxconfig kernelconfig:
 	$(hide) mkdir -p $(KERNEL_OUT)

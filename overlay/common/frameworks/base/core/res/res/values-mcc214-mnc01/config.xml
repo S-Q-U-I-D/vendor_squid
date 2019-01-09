@@ -17,7 +17,11 @@
 */
 -->
 
+<<<<<<< HEAD
  <!-- These resources are around just to allow their values to be customized
+=======
+<!-- These resources are around just to allow their values to be customized
+>>>>>>> a48aa366... ionize
      for different hardware and product builds. -->
 <resources>
     <bool name="config_sms_force_7bit_encoding">false</bool>

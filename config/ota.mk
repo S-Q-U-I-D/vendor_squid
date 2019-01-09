@@ -17,4 +17,3 @@ endif
     vendor/squid/config/permissions/org.pixelexperience.ota.xml:system/etc/permissions/org.pixelexperience.ota.xml
 
  endif
-endif

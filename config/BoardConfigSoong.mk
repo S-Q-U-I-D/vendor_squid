@@ -6,6 +6,7 @@ EXPORT_TO_SOONG := \
     TARGET_KERNEL_CONFIG \
     TARGET_KERNEL_SOURCE
 
+
 SOONG_CONFIG_squidVarsPlugin :=
 
 define addVar

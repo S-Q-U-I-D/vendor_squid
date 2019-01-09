@@ -31,6 +31,7 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 SQUID_ROOT="$MY_DIR"/../../..
 
 HELPER="$SQUID_ROOT"/vendor/squid/build/tools/extract_utils.sh
+
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1

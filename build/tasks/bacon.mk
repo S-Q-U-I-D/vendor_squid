@@ -1,5 +1,7 @@
 # Copyright (C) 2017 Unlegacy-Android
 # Copyright (C) 2017 The Squid-OS Project
+# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2019 The ion-OS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

@@ -2,6 +2,7 @@
 # Copyright (C) 2012-2013, The CyanogenMod Project
 #           (C) 2017,      The LineageOS Project
 #           (C) 2019       The squid-OS Project
+#           (C) 2019       The ion-OS Project
 #
 # Licensed under the Apache License, Verssquid 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -44,10 +45,10 @@ DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
 custom_local_manifest = ".repo/local_manifests/pixel.xml"
-custom_default_revissquid = "pie"
+custom_default_revision = "pie"
 custom_dependencies = "aosp.dependencies"
-org_manifest = "pixel-devices"  # leave empty if org is provided in manifest
-org_display = "PixelExperience-Devices"  # needed for displaying
+org_manifest = "devices"  # leave empty if org is provided in manifest
+org_display = "squid-OS  # needed for displaying
 
 github_auth = None
 
@@ -76,7 +77,7 @@ def add_auth(g_req):
         else:
             github_auth = ""
     if github_auth:
-        g_req.add_header("Authorizatsquid", "Basic %s" % github_auth)
+        g_req.add_header("Authorization", "Basic %s" % github_auth)
 
 
 def indent(elem, level=0):
@@ -119,23 +120,22 @@ def get_remote(manifest=None, remote_name=None):
         if remote_name == remote.get('name'):
             return remote
 
-
-def get_revissquid(manifest=None, p="build"):
-    return custom_default_revissquid
+def get_revision(manifest=None, p="build"):
+    return custom_default_revision
     m = manifest or load_manifest(default_manifest)
     project = None
     for proj in m.findall('project'):
         if proj.get('path').strip('/') == p:
             project = proj
             break
-    revissquid = project.get('revissquid')
-    if revissquid:
-        return revissquid.replace('refs/heads/', '').replace('refs/tags/', '')
+    revision = project.get('revision')
+    if revision:
+        return revision.replace('refs/heads/', '').replace('refs/tags/', '')
     remote = get_remote(manifest=m, remote_name=project.get('remote'))
-    revissquid = remote.get('revissquid')
-    if not revissquid:
-        return custom_default_revissquid
-    return revissquid.replace('refs/heads/', '').replace('refs/tags/', '')
+    revision = remote.get('revision')
+    if not revision:
+        return custom_default_revision
+    return revision.replace('refs/heads/', '').replace('refs/tags/', '')
 
 
 def get_from_manifest(device_name):
@@ -166,7 +166,7 @@ def add_to_manifest(repos, fallback_branch=None):
 	if 'branch' in repo:
 	    repo_branch=repo['branch']
 	else:
-	    repo_branch=custom_default_revissquid
+	    repo_branch=custom_default_revision
 	if 'remote' in repo:
 	    repo_remote=repo['remote']
 	elif "/" not in repo_name:
@@ -188,11 +188,11 @@ def add_to_manifest(repos, fallback_branch=None):
         )
 
         if repo_branch is not None:
-            project.set('revissquid', repo_branch)
+            project.set('revision', repo_branch)
         elif fallback_branch:
             print("Using branch %s for %s" %
                   (fallback_branch, repo_name))
-            project.set('revissquid', fallback_branch)
+            project.set('revision', fallback_branch)
         else:
             print("Using default branch for %s" % repo_name)
 	if 'clone-depth' in repo:
@@ -201,7 +201,7 @@ def add_to_manifest(repos, fallback_branch=None):
         lm.append(project)
 
     indent(lm)
-    raw_xml = "\n".join(('<?xml verssquid="1.0" encoding="UTF-8"?>',
+    raw_xml = "\n".join(('<?xml version="1.0" encoding="UTF-8"?>',
                          ElementTree.tostring(lm).decode()))
 
     f = open(custom_local_manifest, 'w')
@@ -225,7 +225,7 @@ def fetch_dependencies(repo_path, fallback_branch=None):
             dependencies = json.load(dep_f)
     else:
         dependencies = {}
-        print('%s has no additsquidal dependencies.' % repo_path)
+        print('%s has no additional dependencies.' % repo_path)
 
     fetch_list = []
     syncable_repos = []
@@ -233,8 +233,8 @@ def fetch_dependencies(repo_path, fallback_branch=None):
     for dependency in dependencies:
         if not is_in_manifest(dependency['target_path']):
             if not dependency.get('branch'):
-                dependency['branch'] = (get_revissquid() or
-                                        custom_default_revissquid)
+                dependency['branch'] = (get_revision() or
+                                        custom_default_revision)
 
             fetch_list.append(dependency)
             syncable_repos.append(dependency['target_path'])
@@ -253,14 +253,14 @@ def fetch_dependencies(repo_path, fallback_branch=None):
         fetch_dependencies(deprepo)
 
 
-def has_branch(branches, revissquid):
-    return revissquid in (branch['name'] for branch in branches)
+def has_branch(branches, revision):
+    return revision in (branch['name'] for branch in branches)
 
 
-def detect_revissquid(repo):
+def detect_revision(repo):
     """
-    returns None if using the default revissquid, else return
-    the branch name if using a different revissquid
+    returns None if using the default revision, else return
+    the branch name if using a different revision
     """
     print("Checking branch info")
     githubreq = urllib.request.Request(
@@ -268,11 +268,11 @@ def detect_revissquid(repo):
     add_auth(githubreq)
     result = json.loads(urllib.request.urlopen(githubreq).read().decode())
 
-    calc_revissquid = get_revissquid()
-    print("Calculated revissquid: %s" % calc_revissquid)
+    calc_revision = get_revision()
+    print("Calculated revision: %s" % calc_revision)
 
-    if has_branch(result, calc_revissquid):
-        return calc_revissquid
+    if has_branch(result, calc_revision):
+        return calc_revision
 
     fallbacks = os.getenv('ROOMSERVICE_BRANCHES', '').split()
     for fallback in fallbacks:
@@ -280,10 +280,10 @@ def detect_revissquid(repo):
             print("Using fallback branch: %s" % fallback)
             return fallback
 
-    if has_branch(result, custom_default_revissquid):
-        print("Falling back to custom revissquid: %s"
-              % custom_default_revissquid)
-        return custom_default_revissquid
+    if has_branch(result, custom_default_revision):
+        print("Falling back to custom revision: %s"
+              % custom_default_revision)
+        return custom_default_revision
 
     print("Branches found:")
     for branch in result:
@@ -344,7 +344,7 @@ def main():
             continue
         print("Found repository: %s" % repository['name'])
 
-        fallback_branch = detect_revissquid(repository)
+        fallback_branch = detect_revision(repository)
         manufacturer = repo_name[7:-(len(device)+1)]
         repo_path = "device/%s/%s" % (manufacturer, device)
         adding = [{'repository': repo_name, 'target_path': repo_path}]
