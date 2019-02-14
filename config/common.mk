@@ -45,9 +45,9 @@ endif
 PRODUCT_PACKAGES += \
     AmbientPlayHistoryProvider
 
-# Ambient Play
+# THermal Controller
 PRODUCT_PACKAGES += \
-    AmbientPlayHistoryProvider
+    ThermalController
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
