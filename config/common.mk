@@ -45,10 +45,6 @@ endif
 PRODUCT_PACKAGES += \
     AmbientPlayHistoryProvider
 
-# THermal Controller
-PRODUCT_PACKAGES += \
-    ThermalController
-
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/squid/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -142,6 +138,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     org.pixelexperience.keydisabler
 
+# Weather
+PRODUCT_PACKAGES += \
+    WeatherProvider
+
 # Branding
 include vendor/squid/config/branding.mk
 
@@ -149,7 +149,7 @@ include vendor/squid/config/branding.mk
 include vendor/squid/config/ota.mk
 
 # Google
-include vendor/google/config.mk
+include vendor/google/squid/config.mk
 
 # Themes
 #include vendor/themes/config.mk

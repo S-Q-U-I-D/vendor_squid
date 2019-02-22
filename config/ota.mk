@@ -1,5 +1,6 @@
 ifneq ($(IS_GENERIC_SYSTEM_IMAGE), true)
-ifeq ($(SQUID_BUILD_TYPE), OFFICIAL)
+
+ifeq ($(SQUID_BUILD_TYPE), Release)
 
  ifeq ($(IS_GO_VERSION), true)
 SQUID_OTA_VERSION_CODE := pie_go
@@ -14,6 +15,6 @@ endif
     Updates
 
  PRODUCT_COPY_FILES += \
-    vendor/squid/config/permissions/org.pixelexperience.ota.xml:system/etc/permissions/org.pixelexperience.ota.xml
+    vendor/squid/config/permissions/com.squid.ota.xml:system/etc/permissions/com.squid.ota.xml
 
  endif
