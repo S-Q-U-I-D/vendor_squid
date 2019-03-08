@@ -1,9 +1,4 @@
-# Inherit full common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full.mk)
+# Inherit full common squid-OS stuff
+$(call inherit-product, vendor/squid/config/common_full.mk)
 
-# Required packages
-PRODUCT_PACKAGES += \
-    LatinIME
 
-# Include Lineage LatinIME dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/lineage/overlay/dictionaries

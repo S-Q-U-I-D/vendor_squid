@@ -1,8 +1,5 @@
-# Inherit common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit common Squid-OS stuff
+$(call inherit-product, vendor/squid/config/common.mk)
 
 PRODUCT_SIZE := full
 
-# Recorder
-PRODUCT_PACKAGES += \
-    Recorder
