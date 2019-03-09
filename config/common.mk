@@ -98,6 +98,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl
 
+# Power whitelist
+PRODUCT_COPY_FILES += \	PRODUCT_COPY_FILES += \
+    vendor/squid/config/permissions/custom-power-whitelist.xml:system/etc/sysconfig/custom-power-whitelist.xml	    vendor/ion/config/permissions/custom-power-whitelist.xml:system/etc/sysconfig/custom-power-whitelist.xml
+
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
@@ -139,10 +143,10 @@ PRODUCT_BOOT_JARS += \
     org.pixelexperience.keydisabler
 
 # Branding
-include vendor/ion/config/branding.mk
+include vendor/squid/config/branding.mk
 
 # OTA
-include vendor/ion/config/ota.mk
+include vendor/squid/config/ota.mk
 
 # Google
 include vendor/google/config.mk
