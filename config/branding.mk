@@ -1,9 +1,10 @@
 # Copyright (C) 2019 The ion-OS Project
 
 # Set all versions
-SQUID_BUILD_TYPE ?= UNOFFICIAL
+
 SQUID_BUILD_DATE := $(shell date -u +%Y%m%d-%H%M)
 SQUID_PLATFORM_VERSION := 9.0
+SQUIDS := 1.0
 
  TARGET_PRODUCT_SHORT := $(subst squid_,,$(SQUID_BUILD))
 
@@ -15,7 +16,18 @@ SQUID_VERSION := squid-OS_$(SQUID_BUILD)-$(SQUID_PLATFORM_VERSION)-$(SQUID_BUILD
 SQUID_FINGERPRINT := squid-OS/$(SQUID_PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(SQUID_BUILD_DATE)
 endif
 
- ION_PROPERTIES := \
+ifeq ($(SQUID_BUILD_TYPE), OFFICIAL)
+SQUID_BUILD_TYPE := Release
+endif
+
+ ifeq ($(SQUID_BUILD_TYPE), PREVIEW)
+SQUID_BUILD_TYPE := Preview-Release
+endif
+
+SQUID_BUILD_TYPE ?= UNOFFICIAL
+
+
+SQUID _PROPERTIES := \
     ro.squid.version=$(SQUID_VERSION) \
     ro.squid.build_date=$(SQUID_BUILD_DATE) \
     ro.squid.build_type=$(SQUID_BUILD_TYPE) \
