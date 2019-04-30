@@ -132,12 +132,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     media.recorder.show_manufacturer_and_model=true
 
-# Key disabler package
-PRODUCT_PACKAGES += \
-    org.pixelexperience.keydisabler
-
-PRODUCT_BOOT_JARS += \
-    org.pixelexperience.keydisabler
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/ion/overlay
+DEVICE_PACKAGE_OVERLAYS += vendor/ion/overlay/common
 
 # Weather
 PRODUCT_PACKAGES += \

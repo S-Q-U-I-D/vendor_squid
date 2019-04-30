@@ -8,6 +8,5 @@ var SquidConfig = struct {
 }{
 	// JavaSourceOverlayModuleWhitelist
 	[]string{
-		"org.pixelexperience.keydisabler",
 	},
 }
