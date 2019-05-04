@@ -1,4 +1,4 @@
-PRODUCT_BRAND ?= squid-OS
+WPRODUCT_BRAND ?= squid-OS
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -65,6 +65,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/squid/config/permissions/lineage-sysconfig.xml:system/etc/sysconfig/lineage-sysconfig.xml
     vendor/squid/config/permissions/privapp-permissions-aosp.xml:system/etc/permissions/privapp-permissions-aosp.xml \
+    vendor/squid/config/permissions/org.lineageos.snap.xml:system/etc/permissions/org.lineageos.snap.xml \
+    vendor/squid/config/permissions/privapp-permissions-custom.xml:system/etc/permissions/privapp-permissions-custom.xml
 
 # init.d support
 PRODUCT_COPY_FILES += \
