@@ -17,7 +17,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Default ringtone
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-ro.config.ringtone=The_big_adventure.ogg
+    ro.config.ringtone=The_big_adventure.ogg,The_big_adventure.ogg
 
 # Inherit full common squid-OS stuff
 $(call inherit-product, vendor/squid/config/common_full.mk)
