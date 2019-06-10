@@ -366,7 +366,7 @@ function installboot()
         adb shell rm -rf /cache/boot.img
         echo "Installation complete."
     else
-        echo "The connected device does not appear to be $ION_BUILD, run away!"
+        echo "The connected device does not appear to be $SQUID_BUILD, run away!"
     fi
 }
 
